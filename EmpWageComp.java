@@ -18,6 +18,8 @@ class employeeWage {
     private int monthlyWorkingHours;
     private int monthlyWorkingDays;
 
+    private List<Integer> dailyWage;
+
     /*
         @desc: constructor for class employeeWage
         @params: company name, wageRate, fullTimeHour, partTimeHour, monthlyWorkingHours, monthlyWorkingDays
@@ -30,6 +32,7 @@ class employeeWage {
         this.partTimeHour = partTimeHour;
         this.monthlyWorkingHours=monthlyWorkingHours;
         this.monthlyWorkingDays=monthlyWorkingDays;
+        dailyWage = new ArrayList<Integer>();
     }
 
     /*
@@ -58,6 +61,19 @@ class employeeWage {
 
     public int getMonthlyWorkingDays(){
         return monthlyWorkingDays;
+    }
+
+    public List<Integer> getDailyWage(){
+        return dailyWage;
+    }
+
+    /*
+     @desc: setter for daily wage
+     @params: value to be added to list
+     @return: void
+     */
+    public void addWage(int wage){
+        dailyWage.add(wage);
     }
 }
 
@@ -120,6 +136,7 @@ class EmpWageBuilder{
                     daysWorked += 1;
                     hoursWorked += emp.getPartTimeHour();
                 }
+                emp.addWage(hoursWorked*emp.getWageRate());
             }
             int totalWage = totalWage(emp.getWageRate(), hoursWorked);
             System.out.println("Total Working Hours in a month: " + hoursWorked);
