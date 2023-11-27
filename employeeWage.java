@@ -5,15 +5,17 @@ public class employeeWage {
     private static final int fullTime = 1;
     private static final int partTime = 2;
     private static final int monthly = 3;
-    private static final int wageRate = 8;
+    private static final int wageRate = 20;
+    private static final int fullTimeHour = 8;
+    private static final int partTimeHour = 8;
     /*
         @desc: function gives random value for employee present or absent
         @params: none
-        @return: 0 for absent and 1 for present
+        @return: 0 for absent and 1 for present and 2 for part-time
      */
     public static int presentOrAbsent(){
         Random random = new Random();
-        return random.nextInt(2);
+        return random.nextInt(3);
     }
 
     /*
@@ -27,36 +29,22 @@ public class employeeWage {
 
     public static void main(String[] arg){
         System.out.println("Employee Wage System");
-        System.out.print("Enter your choice(1. for full time, 2. for part time, 3. for monthly): ");
-        Scanner input = new Scanner(System.in);
-        int choice = input.nextInt();
-
-        switch (choice){
-            case fullTime:
-                int attendance = presentOrAbsent();
-                int fullTimeHours = 0;
-                if(attendance==1){
-                    fullTimeHours = 20;
-                    System.out.println("Employee is present");
-                }
-                System.out.println("Total Wage: " + totalWage(wageRate,fullTimeHours));
-                break;
-            case partTime:
-                int attendence = presentOrAbsent();
-                int partTimeHours = 0;
-                if(attendence==1){
-                    partTimeHours = 4;
-                    System.out.println("Employee is present");
-                }
-                System.out.println("Total Wage: " + totalWage(wageRate,partTimeHours));
-                break;
-            case monthly:
-                int monthlyHours = 100;
-                System.out.println("Total Wage: " + totalWage(wageRate,monthlyHours));
-                break;
-            default:
-                System.out.print("Invalid input");
-                break;
+        System.out.println("Calculating Monthly Wages .....");
+        int daysWorked=0, hoursWorked = 0;
+        while(daysWorked<20 && hoursWorked<100){
+            int attendance = presentOrAbsent();
+            if(attendance==1){
+                daysWorked+=1;
+                hoursWorked+=partTimeHour;
+            }
+            else if(attendance==2){
+                daysWorked+=1;
+                hoursWorked+=fullTimeHour;
+            }
         }
+        int totalWage = totalWage(wageRate, hoursWorked);
+        System.out.println("Total Working Hours in a month: " + hoursWorked);
+        System.out.println("Total Days Worked in a month: " + daysWorked);
+        System.out.print("Total Wage for this month: " + totalWage);
     }
 }
