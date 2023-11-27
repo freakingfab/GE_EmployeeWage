@@ -11,11 +11,11 @@ public class employeeWage {
     }
 
     /*
-        desc: provides total wage with employee wage rate and hours worked
+        desc: provides total wage with employee wage rate and hours worked (full+part-time)
         @params: wage rate and hours worked
         @return: total wage(int)
      */
-    public static int totalWage(int wageRate, int hoursWorked){
-        return wageRate*hoursWorked;
+    public static int totalWage(int wageRate, int hoursWorked, int parttimeHours){
+        return wageRate*hoursWorked + wageRate*parttimeHours;
     }
 }
