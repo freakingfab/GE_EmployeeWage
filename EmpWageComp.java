@@ -2,6 +2,13 @@ import java.util.ArrayList;
 import java.util.Random;
 import java.util.List;
 
+/*
+ desc: interface for adding companies in the system
+ */
+interface empWageInterface{
+    void monthlyWage();
+}
+
 class employeeWage {
     private String companyName;
     private int wageRate;
