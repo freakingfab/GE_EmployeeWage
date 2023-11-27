@@ -1,6 +1,5 @@
 import java.util.Random;
 public class employeeWage {
-
     /*
         @desc: function gives random value for employee present or absent
         @params: none
@@ -11,4 +10,12 @@ public class employeeWage {
         return random.nextInt(2);
     }
 
+    /*
+        desc: provides total wage with employee wage rate and hours worked
+        @params: wage rate and hours worked
+        @return: total wage(int)
+     */
+    public static int totalWage(int wageRate, int hoursWorked){
+        return wageRate*hoursWorked;
+    }
 }
