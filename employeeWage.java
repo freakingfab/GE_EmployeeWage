@@ -6,6 +6,8 @@ public class employeeWage {
     private int fullTimeHour;
     private int partTimeHour;
 
+    private int totalEmpWage;
+
     /*
         @desc: constructor for class employeeWage
         @params: wageRate, fullTimeHour, partTimeHour
@@ -54,6 +56,7 @@ public class employeeWage {
             }
         }
         int totalWage = totalWage(companyA.wageRate, hoursWorked);
+        companyA.totalEmpWage=totalWage;
         System.out.println("Total Working Hours in a month: " + hoursWorked);
         System.out.println("Total Days Worked in a month: " + daysWorked);
         System.out.println("Total Wage for this month: " + totalWage);
@@ -74,6 +77,7 @@ public class employeeWage {
             }
         }
         totalWage = totalWage(companyB.wageRate, hoursWorked);
+        companyB.totalEmpWage= totalWage;
         System.out.println("Total Working Hours in a month: " + hoursWorked);
         System.out.println("Total Days Worked in a month: " + daysWorked);
         System.out.println("Total Wage for this month: " + totalWage);
