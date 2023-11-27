@@ -2,12 +2,21 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class employeeWage {
-    private static final int fullTime = 1;
-    private static final int partTime = 2;
-    private static final int monthly = 3;
-    private static final int wageRate = 20;
-    private static final int fullTimeHour = 8;
-    private static final int partTimeHour = 8;
+    private int wageRate;
+    private int fullTimeHour;
+    private int partTimeHour;
+
+    /*
+        @desc: constructor for class employeeWage
+        @params: wageRate, fullTimeHour, partTimeHour
+        @return: void
+     */
+    public employeeWage(int wageRate, int fullTimeHour, int partTimeHour){
+        this.wageRate= wageRate;
+        this.fullTimeHour = fullTimeHour;
+        this.partTimeHour = partTimeHour;
+    }
+
     /*
         @desc: function gives random value for employee present or absent
         @params: none
@@ -29,22 +38,44 @@ public class employeeWage {
 
     public static void main(String[] arg){
         System.out.println("Employee Wage System");
+        System.out.println("Company A");
+        employeeWage companyA= new employeeWage(8,20,10);
         System.out.println("Calculating Monthly Wages .....");
         int daysWorked=0, hoursWorked = 0;
         while(daysWorked<20 && hoursWorked<100){
             int attendance = presentOrAbsent();
             if(attendance==1){
                 daysWorked+=1;
-                hoursWorked+=partTimeHour;
+                hoursWorked+= companyA.fullTimeHour;
             }
             else if(attendance==2){
                 daysWorked+=1;
-                hoursWorked+=fullTimeHour;
+                hoursWorked+= companyA.partTimeHour;
             }
         }
-        int totalWage = totalWage(wageRate, hoursWorked);
+        int totalWage = totalWage(companyA.wageRate, hoursWorked);
         System.out.println("Total Working Hours in a month: " + hoursWorked);
         System.out.println("Total Days Worked in a month: " + daysWorked);
-        System.out.print("Total Wage for this month: " + totalWage);
+        System.out.println("Total Wage for this month: " + totalWage);
+
+        System.out.println("Company B");
+        employeeWage companyB= new employeeWage(12,20,10);
+        System.out.println("Calculating Monthly Wages .....");
+        daysWorked=0; hoursWorked = 0;
+        while(daysWorked<20 && hoursWorked<100){
+            int attendance = presentOrAbsent();
+            if(attendance==1){
+                daysWorked+=1;
+                hoursWorked+= companyB.fullTimeHour;
+            }
+            else if(attendance==2){
+                daysWorked+=1;
+                hoursWorked+= companyB.partTimeHour;
+            }
+        }
+        totalWage = totalWage(companyB.wageRate, hoursWorked);
+        System.out.println("Total Working Hours in a month: " + hoursWorked);
+        System.out.println("Total Days Worked in a month: " + daysWorked);
+        System.out.println("Total Wage for this month: " + totalWage);
     }
 }
